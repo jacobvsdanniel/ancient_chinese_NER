@@ -9,8 +9,8 @@ evaluate.py # The training and evaluation scripts
 oldhan.py # The API for extracting and reading ancient Chinese data
 ```
 
-## IHP Dataset
-### 1. Get the dataset
+## 1. IHP Dataset
+### Get the dataset
 
 The dataset is provided by Institute of History and Philology, Academia Sinica (中央研究院歷史語言研究所).
 
@@ -35,7 +35,7 @@ Set its root directory in oldhan.py.
 raw_data_path = "/share/home/jacobvsdanniel/NER/oldhan/unlabeled_oldhan"
 ```
 
-### 2. Preprocess Data
+### Preprocess Data
 
 As the dataset is only partially annotated, contact IHP for label information.
 Set their path in oldhan.py, where eid stands for entity ID.
@@ -75,7 +75,7 @@ for entity_type, data_file in entity_type_to_data_file.items():
     read_dataset(data_file, write_category_list=True)
 ```
 
-## Data Format
+## 2. Data Format
 
 The preprocessed IHP dataset or any custom dataset should observe the following naming convention and format.
 Take entity type person as example.
@@ -94,4 +94,19 @@ Y       010001937       李衞    議具奏欽此遵旨議凖原任直隸總督 
 Character list file can be created automatically by using the following function in oldhan.py.
 ```python
 read_dataset("person.txt", write_category_list=True)
+```
+
+## 3. Train Model
+
+Prerequisite
+* TensorFlow 1.12.0
+
+Train model for, say, entity type person with files under ./oldhan/. The output will be saved to ./model/.
+```
+python evaluate.py -mode train -dataset oldhan -data_file oldhan/person.txt -hidden 2-100 -output 100-2 -suffix 20190101
+```
+
+Evaluate performance on, say, testing split.
+```
+python evaluate.py -mode evaluate -split test -dataset oldhan -data_file oldhan/person.txt -hidden 2-100 -output 100-2 -suffix 20190101
 ```
