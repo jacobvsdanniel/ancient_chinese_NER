@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+  <title>CKIP Ancient Chinese Document NER</title>
+
+</head>
+<body>
+
+<p>
+    <h1>CKIP Ancient Chinese Document NER</h1>
+    <h3><a href="http://ckip.iis.sinica.edu.tw:8080">CKIP Lab</a></h3>
+    <h3><a href="https://github.com/jacobvsdanniel/ancient_chinese_NER">Project Home</a></h3>
+</p>
+
+<button type="submit" class="input_submit" onClick="load_model()">load model</button>
+<button type="submit" class="input_submit" onClick="predict_positive_likelihood()">predict</button>
+<br />
+<div id="div_status">Done</div>
+<br />
+Model
+<textarea id="ta_model" rows=1 cols=30>person</textarea>
+Loaded Model List
+<textarea id="ta_model_list" rows=6 cols=30></textarea>
+<br />
+<textarea id="ta_pl_list" rows=40 cols=11></textarea>
+<textarea id="ta_sample_list" rows=40 cols=150>
+N	何岳鍾	何能周悉。且伊既與岳鍾琪面談。	琪所云三萬五千人進攻之說。竟全
+Y	何岳鍾	使司通政使。○以廣東澄海協副將	、為陽江鎮總兵官。○以理藩院尚
+Y	何岳鍾	廣東陽江鎮總兵官。陽江鎮總兵官	、為黃巖鎮總兵官。
+Y	何岳鍾	辦理防堵事務。浙江黃巖鎮總兵官	、因病解任。以四川懋功協副將恆
+Y	鄂賴	等戶口、會造總冊投遞。因差郎中	、遊擊黃喜林等、持銀牌、茶、緞
+Y	鄂賴	。應行令年羹堯等、俟差去之郎中	等一到、將彼處情形、並所得一應
+Y	鄂賴	妄生疑慮。著一等侍衛達鼐。郎中	。前往照管。俟將羅卜臧錫拉布等
+Y	鄂賴	都察院左副都御史○擢理藩院郎中	、為內閣學士兼禮部侍郎。前往西
+Y	鄂賴	并奉先殿。得旨、是○命內閣學士	、自藏至西寧。辦理蒙古事務○琉
+Y	鄂賴	拜、兼兵部侍郎行走○陞內閣學士	、為理藩院額外侍郎
+Y	總督閩浙	日。新疆巡撫衙門八十二日。四川	總督福建巡撫衙門四十八日。貴州
+N	總督閩浙	 ○四十八年諭。兩江	總督等合詞陳奏。以江浙兩省臣民
+Y	總督閩浙	皇帝南巡。先是四十八年諭。兩江	總督等合詞陳奏。以江浙兩省臣民
+Y	總督閩浙	日。陝甘總督衙門四十一日。四川	總督福建巡撫衙門四十八日。貴州
+Y	總督閩浙	浙撫。朝廷因材器使。原以左宗棠	。軍務綦繁。 而浙省不可無人分任
+N	總督閩浙	議行。摺包○署福州將軍調補陝甘	總督楊昌濬奏交卸督篆。將軍篆務
+N	總督閩浙	力保護。毋稍疏虞。摺包○署四川	總督錫良奏、擬將川省腹地綠營額
+Y	總督閩浙	外任。荐膺疆寄。旋授尚書都統。	。宣力有年。克勤厥職。茲以福建
+Y	總督天津等處軍務	太子太傅左都督駱養性、仍以原官	。
+Y	總督直隸山東河南	 ○十五年。裁舊設	軍務一人、及標下中左右前後五營
+N	雙城	學　墨爾根城義學　綏遠城義學　	堡義學卷一千一百三十六八旗都統
+Y	雙城	廳學正、為府學教授。設伊通州、	廳、各訓導一人。 ○又甘肅甯夏府
+Y	雙城	府。伯都訥、長春、五常、賓州、	、五廳。伊通一州。 ○又新疆南路
+Y	雙城	、五常、三廳。撫民同知各一人。	廳、撫民通判一人。吉林府、經歷
+Y	雙城	。五常廳、經歷一人。巡檢二人。	廳、巡檢二人。伯都訥廳、巡檢二
+Y	雙城	各一人。改設府經歷一人。又添設	廳撫民通判一人。巡檢二人。 ○又
+Y	雙城	補班次。悉照賓州廳五常廳之例。	廳撫民通判。作為中缺。歸部銓選
+Y	雙城	由候補並揀發人員內。酌量咨補。	廳、拉林、二巡檢。歸部銓選。如
+Y	雙城	蘭彩橋巡檢、儒學、攢典各一人。	廳通判。典吏六人。司獄、巡檢、
+Y	雙城	。升吉林直隸廳為府。置伊通州、	廳。隸府屬。 ○又改伯都訥理事同
+N	宗　人　府	部　郞　中　　臣汪　桂原　任　	　主　事臣徐　煥內閣中書今
+Y	山西道	。皆於月之二十五日。兵部堂官會	御史掣籤於　天安門外。若掣差官
+Y	山西道	議之件。而督以例限。每月於兵科	註銷。
+Y	山西道	務府、奉宸苑、上駟院、武備院、	御史、北城御史、鑲白旗、崇文門
+Y	山西道	。監察御史。滿洲一人。漢一人。	掌印監察御史。滿洲一人。漢一人
+Y	山西道	十三倉。浙江道稽察禮部都察院。	稽察兵部翰林院六科中書科總督倉
+Y	山西道	蘇安徽刑名。浙江道掌浙江刑名。	掌山西刑名。山東道掌山東刑名。
+Y	山西道	。河南道御史監掣。武職月選籤。	御史監掣。搭餉。局錢搭放兵餉。
+Y	山西道	畿道江南道各三人。河南道浙江道	山東道陝西道湖廣道江西道福建道
+Y	山西道	西司廣西司雲南司。都察院河南道	陝西道湖廣道江西道福建道廣西道
+</textarea>
+
+<script type="text/javascript">
+
+function load_model(){
+    document.getElementById("div_status").innerHTML = "Loading...";
+    
+    entity_type = document.getElementById("ta_model").value;
+    request_data = {"entity_type": entity_type};
+    
+    fetch("/load_model", {method: "post", body: JSON.stringify(request_data)})
+    .then(function(response) {
+        return response.text();
+    })
+    .then(function(response_data) {
+        document.getElementById("ta_model_list").value = response_data;
+        document.getElementById("div_status").innerHTML = "Done";
+    })
+    .catch(function(error) {
+        <!-- log('Request failed', error); -->
+        document.getElementById("div_status").innerHTML = error.message;
+    });
+}
+  
+function predict_positive_likelihood(){
+    document.getElementById("div_status").innerHTML = "Loading...";
+    
+    entity_type = document.getElementById("ta_model").value;
+    sample_list = document.getElementById("ta_sample_list").value;
+    request_data = {"entity_type": entity_type, "sample_list": sample_list};
+    
+    fetch("/predict_positive_likelihood", {method: "post", body: JSON.stringify(request_data)})
+    .then(function(response) {
+        return response.text();
+    })
+    .then(function(response_data) {
+        document.getElementById("ta_pl_list").value = response_data;
+        document.getElementById("div_status").innerHTML = "Done";
+    })
+    .catch(function(error) {
+        <!-- log('Request failed', error); -->
+        document.getElementById("div_status").innerHTML = error.message;
+    });
+}
+
+</script>
+
+</body>
+</html>
