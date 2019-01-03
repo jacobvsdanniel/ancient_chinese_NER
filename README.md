@@ -1,14 +1,18 @@
 # ancient_chinese_NER
 
 This repository contains a model for training, evaluating, predicting entities for ancient Chinese documents.
+
 Included are a model implemented with TensorFlow, scripts for train and evaluate, Python API for prediction.
+
+[Online Demo](http://sky.iis.sinica.edu.tw:9002)
 
 ```python
 model.py # Computation graph
 evaluate.py # Training and evaluation scripts
 oldhan.py # Preprocessing functions for ancient Chinese data
 ner.py # Prediction API
-demo.py # Sample usage of prediction API
+demo.py # Sample command line usage of prediction API
+web_demo/ # Sample website usage of prediction API
 ```
 
 ## 1. IHP Dataset
@@ -144,4 +148,7 @@ for index, line in enumerate(line_list):
     print(f"{pl_list[index]:.2%}\t{line}")
 ```
 
-
+A demo website is provided in demo_website/. To start the server, run
+```
+$ python server.py -host 0.0.0.0 -port 9002
+```
