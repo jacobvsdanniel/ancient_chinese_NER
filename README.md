@@ -4,9 +4,11 @@ This repository contains a model for training, evaluating, predicting entities f
 Included are a model implemented with TensorFlow, scripts for train and evaluate, Python API for prediction.
 
 ```python
-model.py # The computation graph
-evaluate.py # The training and evaluation scripts
-oldhan.py # The API for extracting and reading ancient Chinese data
+model.py # Computation graph
+evaluate.py # Training and evaluation scripts
+oldhan.py # Preprocessing functions for ancient Chinese data
+ner.py # Prediction API
+demo.py # Sample usage of prediction API
 ```
 
 ## 1. IHP Dataset
@@ -111,3 +113,35 @@ Evaluate performance on, say, testing split.
 ```
 python evaluate.py -mode evaluate -split test -dataset oldhan -data_file oldhan/person.txt -hidden 2-100 -output 100-2 -suffix 20190101
 ```
+
+## 4. Prediction API
+
+Prerequisite
+* TensorFlow 1.12.0
+
+Two Python API are provided in ner.py.
+```python
+get_model(character_list_file, model_directory, model_name, hidden="2-100", output="100-2")
+predict(model, sample_list, batch_samples=256, batch_nodes=8000)
+```
+
+Their sample usage is provided in demo.py.
+```python
+entity_type_to_model[entity_type] = ner.get_model(
+    f"oldhan/{entity_type}.txt_train_character",
+    "model",
+    f"model_oldhan_{entity_type}.txt_BiLSTM-2-100_output-100-2_run1",
+    hidden = "2-100",
+    output = "100-2",
+)
+pl_list = ner.predict(
+    entity_type_to_model[entity_type],
+    sample_list,
+    batch_samples = 256,
+    batch_nodes = 8000,
+)
+for index, line in enumerate(line_list):
+    print(f"{pl_list[index]:.2%}\t{line}")
+```
+
+
