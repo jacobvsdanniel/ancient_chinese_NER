@@ -61,7 +61,7 @@ corpus_id_to_labeled_eid_list_file = {
 }
 ```
 
-Set output path, extract usable data and split into train-test.
+Set output path, extract usable data and split into train-test with functions in oldhan.py.
 ```python
 entity_type_to_data_file = {
     "person": os.path.join(dataset, "person.txt"),
@@ -91,7 +91,7 @@ Y       010001937       李衞    議具奏欽此遵旨議凖原任直隸總督 
 
 * person.txt_train_character
 
-Character list file and be created automatically by running
+Character list file and be created automatically by using the following function in oldhan.py.
 ```python
 read_dataset("person.txt", write_category_list=True)
 ```
