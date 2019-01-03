@@ -91,7 +91,7 @@ Y       010001937       李衞    議具奏欽此遵旨議凖原任直隸總督 
 
 * person.txt_train_character
 
-Character list file and be created automatically by using the following function in oldhan.py.
+Character list file can be created automatically by using the following function in oldhan.py.
 ```python
 read_dataset("person.txt", write_category_list=True)
 ```
